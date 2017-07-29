@@ -46,6 +46,7 @@ gulp.task('scripts', function () {
       './node_modules/leaflet/dist/leaflet.js',
       './node_modules/moment/moment.js',
       './node_modules/wellknown/wellknown.js',
+      './node_modules/qlabel/src/jquery.qlabel.js',
       './node_modules/wikidata-query-gui/wikibase/queryService/api/Wikibase.js',
       './node_modules/wikidata-query-gui/wikibase/queryService/api/Sparql.js',
       './node_modules/wikidata-query-gui/wikibase/queryService/ui/resultBrowser/helper/FormatterHelper.js',
@@ -74,7 +75,8 @@ gulp.task('pages', function () {
       .pipe(template({
         app: yaml.load('config/app.yml'),
         query_files: queryFilenames,
-        query_path: queryPath
+        query_path: queryPath,
+        languages: yaml.load('config/lang.yml')
       }))
       .pipe(gulp.dest('public'));
   });

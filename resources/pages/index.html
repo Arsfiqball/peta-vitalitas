@@ -8,16 +8,31 @@
   <div id="map" class="map">
   </div>
   <div class="control-menu">
-    <a class="button" id="c-button-menu">Menu</a>
+    <a class="button" id="c-button-menu">
+      <span class="qlabel" its-ta-ident-ref="http://www.wikidata.org/entity/Q846925">Menu</span>
+    </a>
   </div>
   <div class="control-panel" id="c-panel-menu">
     <div class="tabs is-small">
       <ul>
-        <li class="is-active"><a>Queries</a></li>
-        <li><a id="c-button-menu-close">close</a></li>
+        <li class="c-panel-tab is-active">
+          <a c-target="#c-panel-content-query">
+            <span class="qlabel" its-ta-ident-ref="http://www.wikidata.org/entity/Q7385">Query</span>
+          </a>
+        </li>
+        <li class="c-panel-tab">
+          <a c-target="#c-panel-content-setting">
+            <span class="qlabel" its-ta-ident-ref="http://www.wikidata.org/entity/Q351657">Setting</span>
+          </a>
+        </li>
+        <li>
+          <a id="c-button-menu-close">
+            <span class="qlabel" its-ta-ident-ref="http://www.wikidata.org/entity/Q420328">Close</span>
+          </a>
+        </li>
       </ul>
     </div>
-    <div class="content">
+    <div id="c-panel-content-query" class="c-panel-content content">
       <% _.forEach(query_files, function (query_file) { %>
         <div class="media">
           <div class="media-left">
@@ -30,6 +45,20 @@
           </div>
         </div>
       <% }); %>
+    </div>
+    <div id="c-panel-content-setting" class="c-panel-content content">
+      <div class="field">
+        <label class="label"><span class="qlabel" its-ta-ident-ref="http://www.wikidata.org/entity/Q12134540">Language</span></label>
+        <div class="control">
+          <div class="select">
+            <select id="c-language-selector">
+              <% _.forEach(languages, function (lang) { %>
+                <option value="<%= lang.code %>"><%= lang.name %></option>
+              <% }); %>
+            </select>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
   <div class="notif-holder" id="c-notif-holder"></div>

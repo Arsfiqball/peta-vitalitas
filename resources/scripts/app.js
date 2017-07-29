@@ -144,4 +144,24 @@ App.prototype._registerEvents = function () {
       self._query(res);
     });
   });
+
+  // language selector
+  $('#c-language-selector').on('change', function () {
+    var lang = $(this).val();
+    $.qLabel.switchLanguage(lang);
+  });
+
+  $('.c-panel-tab a').click(function () {
+    $('.c-panel-content').hide();
+    $('li.c-panel-tab').removeClass('is-active');
+    $($(this).attr('c-target')).show();
+    $(this).closest('li').addClass('is-active');
+  });
+
+  // init
+  $(document).ready(function () {
+    $.qLabel.switchLanguage('en');
+    $('#c-language-selector').val('en');
+    $('.c-panel-tab.is-active a').trigger('click');
+  });
 }

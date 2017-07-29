@@ -1,0 +1,6 @@
+- name: English
+  code: en
+- name: Bahasa
+  code: id
+- name: Español
+  code: es
